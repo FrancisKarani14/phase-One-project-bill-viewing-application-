@@ -27,6 +27,7 @@
   background-color: var(--intro);
   padding: 50px 20px;
   margin: 20px;
+  height: auto;
 }
 
 .intro button {

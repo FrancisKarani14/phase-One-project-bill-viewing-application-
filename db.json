@@ -1,0 +1,51 @@
+
+    {
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Wanjiku",
+      "email": "alice.wanjiku@example.com",
+      "password": "alice123",
+      "county": "Nairobi",
+      "phone": "0712345678",
+      "role": "citizen"
+    },
+    {
+      "id": 2,
+      "name": "John Otieno",
+      "email": "john.otieno@example.com",
+      "password": "john456",
+      "county": "Kisumu",
+      "phone": "0723456789",
+      "role": "citizen"
+    },
+    {
+      "id": 3,
+      "name": "Fatuma Noor",
+      "email": "fatuma.noor@example.com",
+      "password": "fatuma789",
+      "county": "Garissa",
+      "phone": "0734567890",
+      "role": "citizen"
+    },
+    {
+      "id": 4,
+      "name": "Michael Kamau",
+      "email": "michael.kamau@example.com",
+      "password": "mike321",
+      "county": "Kiambu",
+      "phone": "0745678901",
+      "role": "representative"
+    },
+    {
+      "id": 5,
+      "name": "Beatrice Mwende",
+      "email": "beatrice.mwende@example.com",
+      "password": "bea123",
+      "county": "Machakos",
+      "phone": "0756789012",
+      "role": "citizen"
+    }
+  ]
+}
+
