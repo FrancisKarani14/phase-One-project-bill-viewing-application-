@@ -51,10 +51,12 @@ input{
   margin-bottom: 20px;
   background-color: rgba(128, 128, 128, 0.486);
 }
-#signupBtn{
+#signupBtn,
+#loginBtn{
   cursor: pointer;
   background-color: red;
   font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 
