@@ -58,5 +58,17 @@ input{
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
+ .users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content; 
+  padding: 10px;
+  margin: 0 auto; 
+}
+.userDetails{
+  display: flex;
+  justify-content: center;
+}
 
 
