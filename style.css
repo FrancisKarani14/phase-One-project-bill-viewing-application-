@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+:root{
+    --bgcolor:#a18a08c5;
+    --intro:rgba(255, 255, 255, 0.788);
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(var(--bgcolor), var(--bgcolor)), url(https://media.istockphoto.com/id/1307737982/vector/coat-of-arms-of-the-republic-of-kenya.jpg?s=612x612&w=0&k=20&c=drDYJ1wGRo7-cNhJFunIXbN7dRjtf21imuQhhAPAR_w=);
+    /* background-color: var(--bgcolor); */
+    
+}
