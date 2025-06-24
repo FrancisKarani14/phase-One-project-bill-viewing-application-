@@ -6,11 +6,37 @@
 :root{
     --bgcolor:#a18a08c5;
     --intro:rgba(255, 255, 255, 0.788);
+    --jionbutton:#19cf03;
 }
 .container{
     height: 100vh;
     width: 100vw;
     background-image: linear-gradient(var(--bgcolor), var(--bgcolor)), url(https://media.istockphoto.com/id/1307737982/vector/coat-of-arms-of-the-republic-of-kenya.jpg?s=612x612&w=0&k=20&c=drDYJ1wGRo7-cNhJFunIXbN7dRjtf21imuQhhAPAR_w=);
     /* background-color: var(--bgcolor); */
-    
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+  background-color: var(--intro);
+  padding: 50px 20px;
+  margin: 20px;
+}
+
+.intro button {
+  margin-top: 20px;
+  font-size: 1rem;
+  padding: 5px;
+  background-color: var(--jionbutton);
+}
+
+.intro p{
+  font-size: 1.5rem;
+}
+
