@@ -30,14 +30,31 @@
   height: auto;
 }
 
-.intro button {
+.intro #joinBtn {
   margin-top: 20px;
   font-size: 1rem;
   padding: 5px;
   background-color: var(--jionbutton);
+  cursor: pointer;
 }
 
 .intro p{
   font-size: 1.5rem;
 }
+form{
+  display: flex;
+  flex-direction: column;
+  width: 60vh;
+}
+input{
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  background-color: rgba(128, 128, 128, 0.486);
+}
+#signupBtn{
+  cursor: pointer;
+  background-color: red;
+  font-size: 1.5rem;
+}
+
 
