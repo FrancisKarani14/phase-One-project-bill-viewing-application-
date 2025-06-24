@@ -15,9 +15,9 @@ function signupForm() {
         <input type="password" id="password" placeholder="Enter your password">
         <input type="text" id="country" placeholder="Enter your country's name">
         <input type="text" id="county" placeholder="Enter your county's name">
-        <button id="loginBtn" type="button">Login</button>
+        // <button id="loginBtn" type="button">Login</button>
         <button id="signupBtn" type="button">Sign up</button>
-        // <p class="hasnoAccount"></p>
+        
       </form>
     </div>
   `;
@@ -46,7 +46,8 @@ joinBtn.addEventListener("click", () => {
   formH1.textContent = "Login to Citizen Bills";
   
 //   handles the login attempt
-loginBtn.addEventListener("click", async()=>{
+loginBtn.addEventListener("click", async(e)=>{
+    e.preventDefault()
     const email = emailInput.value.trim()
     const password = passwordInput.value.trim()
 
@@ -58,7 +59,7 @@ loginBtn.addEventListener("click", async()=>{
     }
     // fetch request to make sure the user details match what is there in the server
     try{
-        const res = await fetch(`http://localhost:3000/users?email=${email}&passord=${password}`)
+        const res = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`)
         // converts the server response into json object and saves it into the users variable
         // it returns an array if a user matches the datails and an empty array if the user matches no details
         const users = await res.json()
@@ -66,9 +67,16 @@ loginBtn.addEventListener("click", async()=>{
         if (users.length > 0) {
             alert("Login successful")
             
-        }else {
+
+        }
+        // If the user has no account a signup form appears
+        else {
             alert("You dont have an account, sign up")
-            signupForm()
+            userDetails.innerHTML = signupForm();
+            // signupBtn.style.display = "none";
+            // store the login button and hide it sinceit is not required for sighup
+            const loginBtnAfter = document.querySelector("#loginBtn");
+            loginBtnAfter.style.display = "none";
             
         }
         
