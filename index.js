@@ -16,6 +16,7 @@ function signupForm() {
         <input type="password" id="password" placeholder="Enter your password">
         <input type="text" id="country" placeholder="Enter your country's name">
         <input type="text" id="county" placeholder="Enter your county's name">
+        <button id="loginBtn" type="button">log in</button>
         <button id="signupBtn" type="button">Sign up</button>
       </form>
     </div>
@@ -47,12 +48,6 @@ joinBtn.addEventListener("click", () => {
   // changes the h1 from (signup to citizen bills, to login to citizen bills)
   formH1.textContent = "Login to Citizen Bills";
 
-  // create a login button dynamically
-  const loginBtn = document.createElement("button");
-  loginBtn.id = "loginBtn";
-  loginBtn.textContent = "Login";
-  loginBtn.type = "button";
-  passwordInput.insertAdjacentElement("afterend", loginBtn);
 
   // handles the login attempt
   loginBtn.addEventListener("click", async (e) => {
@@ -97,6 +92,7 @@ joinBtn.addEventListener("click", () => {
         userCountry.style.display = "block";
         userCounty.style.display = "block";
         signupBtn.style.display = "inline-block";
+        loginBtn.style.display="none"
 
         formH1.textContent = "Sign up to Citizen Bills";
 

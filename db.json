@@ -47,6 +47,14 @@
       "country": "Kenya",
       "county": "Laikipia",
       "id": 6
+    },
+    {
+      "name": "Naomi Nyanswi",
+      "email": "emailgmail.com",
+      "password": "090909",
+      "country": "Kenya",
+      "county": "Mogori",
+      "id": 7
     }
   ]
 }

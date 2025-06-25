@@ -70,5 +70,27 @@ input{
   display: flex;
   justify-content: center;
 }
+.displayContainer{
+  background-color: var(--bgcolor);
+  height: auto;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+   align-items: center;
+  text-align: center; 
+}
 
+#viewBill{
+  width: auto;
+  font-size: 1.2rem;
+  background-color: var(--jionbutton);
+  padding: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.displayContainer p{
+  font-size: 1.5rem;
+  margin: 10px;
+
+}
 
