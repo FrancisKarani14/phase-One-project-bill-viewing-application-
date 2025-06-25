@@ -56,5 +56,40 @@
       "county": "Mogori",
       "id": 7
     }
-  ]
+  ],
+  "bills": [
+  {
+    "id": 1,
+    "title": "Plastic Ban Act",
+    "summary": "A bill to prohibit the use of single-use plastic bags in retail and grocery stores across the country.",
+    "status": "Pending",
+    "sponsor": "Hon. John Karanja",
+    "dateProposed": "2025-05-01"
+  },
+  {
+    "id": 2,
+    "title": "Youth Employment Bill",
+    "summary": "A bill proposing tax incentives for companies that hire fresh graduates and youth under 30.",
+    "status": "In Committee",
+    "sponsor": "Hon. Mary Atieno",
+    "dateProposed": "2025-04-18"
+  },
+  {
+    "id": 3,
+    "title": "Affordable Housing Act",
+    "summary": "A bill seeking to allocate 5% of the national budget to build affordable housing units in urban areas.",
+    "status": "Passed",
+    "sponsor": "Hon. Peter Wekesa",
+    "dateProposed": "2025-03-10"
+  },
+  {
+    "id": 4,
+    "title": "Public Transport Improvement Bill",
+    "summary": "A bill that mandates the modernization of public transport, including bus fleets and digital fare systems.",
+    "status": "Awaiting Presidential Assent",
+    "sponsor": "Hon. Amina Yusuf",
+    "dateProposed": "2025-02-22"
+  }
+]
+
 }
