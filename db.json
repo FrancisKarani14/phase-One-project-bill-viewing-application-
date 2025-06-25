@@ -1,52 +1,52 @@
-
-    {
+{
   "users": [
     {
       "id": 1,
       "name": "Alice Wanjiku",
       "email": "alice.wanjiku@example.com",
       "password": "alice123",
-      "country":"kenya",
+      "country": "kenya",
       "county": "Nairobi"
-      
-     
     },
     {
       "id": 2,
       "name": "John Otieno",
       "email": "john.otieno@example.com",
       "password": "john456",
-      "country":"kenya",
+      "country": "kenya",
       "county": "Kisumu"
-   
     },
     {
       "id": 3,
       "name": "Fatuma Noor",
       "email": "fatuma.noor@example.com",
       "password": "fatuma789",
-      "country":"kenya",
+      "country": "kenya",
       "county": "Garissa"
-     
     },
     {
       "id": 4,
       "name": "Michael Kamau",
       "email": "michael.kamau@example.com",
       "password": "mike321",
-      "country":"kenya",
+      "country": "kenya",
       "county": "Kiambu"
-      
     },
     {
       "id": 5,
       "name": "Beatrice Mwende",
       "email": "beatrice.mwende@example.com",
       "password": "bea123",
-      "country":"kenya",
+      "country": "kenya",
       "county": "Machakos"
-     
+    },
+    {
+      "name": "Francis Karani",
+      "email": "test@gmail.com",
+      "password": "K909090",
+      "country": "Kenya",
+      "county": "Laikipia",
+      "id": 6
     }
   ]
 }
-
