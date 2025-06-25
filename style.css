@@ -80,7 +80,8 @@ input{
   text-align: center; 
 }
 
-#viewBill{
+#viewBill,
+#addComment{
   width: auto;
   font-size: 1.2rem;
   background-color: var(--jionbutton);
@@ -88,7 +89,7 @@ input{
   margin-bottom: 10px;
   cursor: pointer;
 }
-.displayContainer p{
+.authourizedP {
   font-size: 1.5rem;
   margin: 10px;
 
@@ -96,5 +97,15 @@ input{
 .billDisplay{
   height: auto;
   
+}
+.authorizedH2{
+  font-size:1.5rem ;
+  font-weight: 700;
+}
+.comments{
+  background-color: white;
+  width: auto;
+  height: auto;
+  padding: 5px;
 }
 

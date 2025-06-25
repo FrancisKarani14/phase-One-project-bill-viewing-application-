@@ -4,6 +4,8 @@ const joinBtn = document.getElementById("joinBtn");
 const userDetails = document.querySelector(".userDetails");
 const welcomeSection = document.querySelector("#welcomeSection");
 const intro = document.querySelector(".intro")
+const acceptedDisplay =document.querySelector(".displayContainer")
+const firstContainer = document.querySelector(".container")
 
 // creates the sign up form that will be manipulated to create the login form.
 function signupForm() {
@@ -21,6 +23,25 @@ function signupForm() {
       </form>
     </div>
   `;
+}
+// creates the section where only authorized users will see
+function authorized() {
+    return`
+       <h2 class="authorizedH2" >Welcome to Citizen Bills  Your Voice in Legislation</h2>
+        <p class="authorizedP">A bill is a formal written proposal for a new law or a change to an existing law that is presented for debate and approval by a legislative body, such as a parliament or congress. It outlines specific provisions, rules, or regulations that, if passed through the necessary legislative processes and approved by the appropriate authorities (like a president or governor), become legally binding statutes. Bills are essential tools in shaping public policy, addressing societal needs, and guiding governance. click the button to view the bill.</p><br>
+
+            <button id="viewBill">View the bill</button>
+             <div class="comments">
+        <form>
+            <h2>Participate in the Conversation</h2>
+            <input type="text" placeholder="Enter the bill title ">
+            <input type="text" placeholder="Enter your name">
+            <input type="text" placeholder="Enter your comment">
+            <button id="addComment">Add Comments</button>
+        </form>
+     </div>
+    `
+    
 }
 
 // adds an event listener that displays the form to the Dom using a click event
@@ -71,7 +92,10 @@ joinBtn.addEventListener("click", () => {
       // validation to check whether the user matches details
       if (users.length > 0) {
         alert("Login successful");
-        // you can redirect here or show a welcome section
+        // display once the login is successfull
+        userDetails.style.display="none"
+        acceptedDisplay.innerHTML=authorized()
+        firstContainer.style.display="none"
       }
       // If the user has no account a signup form appears
       else {
@@ -93,6 +117,7 @@ joinBtn.addEventListener("click", () => {
         userCounty.style.display = "block";
         signupBtn.style.display = "inline-block";
         loginBtn.style.display="none"
+         acceptedDisplay.style.display="none"
 
         formH1.textContent = "Sign up to Citizen Bills";
 
@@ -125,9 +150,13 @@ joinBtn.addEventListener("click", () => {
 
             if (res.ok) {
               alert("Signup successful!");
-              // optionally redirect or show welcome screen
+            //   display when the signup is successfull
+              userDetails.style.display="none"
+              acceptedDisplay.innerHTML=authorized()
+               firstContainer.style.display="none"
             } else {
               alert("Signup failed. Try again.");
+               acceptedDisplay.style.display="none"
             }
           } catch (error) {
             console.error("Error during signup:", error);
