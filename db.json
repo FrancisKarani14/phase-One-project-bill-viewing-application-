@@ -53,7 +53,7 @@
       "email": "emailgmail.com",
       "password": "090909",
       "country": "Kenya",
-      "county": "Mogori",
+      "county": "Migori",
       "id": 7
     }
   ],
@@ -90,6 +90,27 @@
     "sponsor": "Hon. Amina Yusuf",
     "dateProposed": "2025-02-22"
   }
+],
+"comments": [
+  {
+    "id": 1,
+    "billId": 1,
+    "author": "Grace Muthoni",
+    "comment": "Consider adding a grace period before the plastic ban takes effect to allow businesses to adjust."
+  },
+  {
+    "id": 2,
+    "billId": 2,
+    "author": "Kevin Otieno",
+    "comment": "The bill should also include provisions for vocational training to enhance youth employability."
+  },
+  {
+    "id": 3,
+    "billId": 3,
+    "author": "Linda Njoroge",
+    "comment": "Please clarify how the 5% housing budget will be distributed across counties to ensure equity."
+  }
 ]
+
 
 }
