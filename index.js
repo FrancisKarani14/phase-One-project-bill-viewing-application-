@@ -1,12 +1,9 @@
-// declare the variables using the attributes that are already in the DOM.
-
 const joinBtn = document.getElementById("joinBtn");
 const userDetails = document.querySelector(".userDetails");
 const welcomeSection = document.querySelector("#welcomeSection");
 const intro = document.querySelector(".intro");
 const acceptedDisplay = document.querySelector(".displayContainer");
 const firstContainer = document.querySelector(".container");
-
 
 // creates the sign up form that will be manipulated to create the login form.
 function signupForm() {
@@ -26,13 +23,15 @@ function signupForm() {
   `;
 }
 
-// creates the section where only authorized users will see
+// authorized user view
 function authorized() {
   return `
     <h2 class="authorizedH2">Welcome to Citizen Bills – Your Voice in Legislation</h2>
     <p class="authorizedP">A bill is a formal written proposal for a new law or a change to an existing law that is presented for debate and approval by a legislative body, such as a parliament or congress. It outlines specific provisions, rules, or regulations that, if passed through the necessary legislative processes and approved by the appropriate authorities (like a president or governor), become legally binding statutes.</p><br>
     <button id="viewBill">View the bill</button>
+     <div class="billDisplay"></div>
     <div class="comments">
+    
       <form>
         <h2>Participate in the Conversation</h2>
         <input type="text" placeholder="Enter the bill title">
@@ -40,12 +39,13 @@ function authorized() {
         <input type="text" placeholder="Enter your comment">
         <button id="addComment">Add Comments</button>
       </form>
+
     </div>
-      <div class="billDisplay"></div>
+    <div class="commentsDisplay"></div>
   `;
 }
 
-// comments card function
+// comment card
 function commentsCard(comment) {
   return `
     <div class="cardDiv">
@@ -55,7 +55,20 @@ function commentsCard(comment) {
   `;
 }
 
-// adds an event listener that displays the form to the DOM using a click event
+// bill card
+function billCard(bill) {
+  return `
+    <div class="billSection">
+      <h1 class="billH1">${bill.author}</h1>
+      <p class="billP">${bill.summary}</p>
+      <h4 class="billH4">${bill.status}</h4>
+      <h4 class="billH4">${bill.sponsor}</h4>
+      <h4 class="billH4">${bill.dateProposed}</h4>
+    </div>
+  `;
+}
+
+// Event listener for join button
 joinBtn.addEventListener("click", () => {
   userDetails.innerHTML = signupForm();
 
@@ -77,7 +90,6 @@ joinBtn.addEventListener("click", () => {
 
   formH1.textContent = "Login to Citizen Bills";
 
-  // handle login
   loginBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     const email = emailInput.value.trim();
@@ -98,6 +110,7 @@ joinBtn.addEventListener("click", () => {
         acceptedDisplay.innerHTML = authorized();
         firstContainer.style.display = "none";
         fetchComments();
+        enableBillView(); // attach view bill logic
       } else {
         alert("You don't have an account, sign up");
         userDetails.innerHTML = signupForm();
@@ -148,6 +161,7 @@ joinBtn.addEventListener("click", () => {
               acceptedDisplay.innerHTML = authorized();
               firstContainer.style.display = "none";
               fetchComments();
+              enableBillView(); // attach view bill logic
             } else {
               alert("Signup failed. Try again.");
             }
@@ -166,15 +180,32 @@ joinBtn.addEventListener("click", () => {
 
 // Fetch and display comments
 function fetchComments() {
-    const billDisplay = document.querySelector(".billDisplay");
-    
+  const commentsDisplay = document.querySelector(".commentsDisplay");
   fetch("http://localhost:3000/comments")
     .then(res => res.json())
     .then(comments => {
-      billDisplay.innerHTML = "";
+      commentsDisplay.innerHTML = "";
       comments.forEach(comment => {
-        billDisplay.innerHTML += commentsCard(comment);
+        commentsDisplay.innerHTML += commentsCard(comment);
       });
     })
     .catch(err => console.error("Fetch error:", err));
+}
+
+// Attach event to #viewBill after DOM is updated
+function enableBillView() {
+  const viewBillBtn = document.querySelector("#viewBill");
+  if (viewBillBtn) {
+    viewBillBtn.addEventListener("click", () => {
+      fetch("http://localhost:3000/bills")
+        .then(res => res.json())
+        .then(bills => {
+          const billDisplay = document.querySelector(".billDisplay");
+          bills.forEach(bill => {
+            billDisplay.innerHTML += billCard(bill);
+          });
+        })
+        .catch(err => console.error("Bill fetch error:", err));
+    });
+  }
 }

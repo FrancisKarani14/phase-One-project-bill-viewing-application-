@@ -111,6 +111,54 @@
       "country": "Kenya",
       "county": "Migori",
       "id": 14
+    },
+    {
+      "name": "karani",
+      "email": "karani@gmail.com",
+      "password": "karani",
+      "country": "Kenya",
+      "county": "Laikipia",
+      "id": 15
+    },
+    {
+      "name": "peter",
+      "email": "peter@gmail.com",
+      "password": "peter",
+      "country": "Kenya",
+      "county": "Migori",
+      "id": 16
+    },
+    {
+      "name": "Dennis",
+      "email": "dennis@gmail.com",
+      "password": "dennin",
+      "country": "Kenya",
+      "county": "Nairobi",
+      "id": 17
+    },
+    {
+      "name": "tm",
+      "email": "tm@gmail.com",
+      "password": "797979",
+      "country": "kenya",
+      "county": "laikipia",
+      "id": 18
+    },
+    {
+      "name": "solomon",
+      "email": "solo@gmail.com",
+      "password": "898989",
+      "country": "kenya",
+      "county": "laikipia",
+      "id": 19
+    },
+    {
+      "name": "Brenda Ngunjiri",
+      "email": "test@gmail.com",
+      "password": "989898",
+      "country": "Kenya",
+      "county": "kajiado",
+      "id": 20
     }
   ],
   "bills": [
