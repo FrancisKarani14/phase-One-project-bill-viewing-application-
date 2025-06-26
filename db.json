@@ -55,62 +55,116 @@
       "country": "Kenya",
       "county": "Migori",
       "id": 7
+    },
+    {
+      "name": "Gillo",
+      "email": "gilo@gmail.com",
+      "password": "343434",
+      "country": "Kenya",
+      "county": "Laikipia",
+      "id": 8
+    },
+    {
+      "name": "david",
+      "email": "da@gmail.com",
+      "password": "55555",
+      "country": "Kenya",
+      "county": "Laikipia",
+      "id": 9
+    },
+    {
+      "name": "melanie",
+      "email": "m@gmail.com",
+      "password": "77777",
+      "country": "Kenya",
+      "county": "lamu",
+      "id": 10
+    },
+    {
+      "name": "akinyi",
+      "email": "a@gmail.com",
+      "password": "99999",
+      "country": "Kenya",
+      "county": "Laikipia",
+      "id": 11
+    },
+    {
+      "name": "AI",
+      "email": "ai@gmail.com",
+      "password": "1234",
+      "country": "Kenya",
+      "county": "kisumu",
+      "id": 12
+    },
+    {
+      "name": "Brenda Ngunjiri",
+      "email": "b@gmail.com",
+      "password": "121212",
+      "country": "Kenya",
+      "county": "kajiado",
+      "id": 13
+    },
+    {
+      "name": "wow",
+      "email": "wow@gmail.com",
+      "password": "8898989",
+      "country": "Kenya",
+      "county": "Migori",
+      "id": 14
     }
   ],
   "bills": [
-  {
-    "id": 1,
-    "title": "Plastic Ban Act",
-    "summary": "A bill to prohibit the use of single-use plastic bags in retail and grocery stores across the country.",
-    "status": "Pending",
-    "sponsor": "Hon. John Karanja",
-    "dateProposed": "2025-05-01"
-  },
-  {
-    "id": 2,
-    "title": "Youth Employment Bill",
-    "summary": "A bill proposing tax incentives for companies that hire fresh graduates and youth under 30.",
-    "status": "In Committee",
-    "sponsor": "Hon. Mary Atieno",
-    "dateProposed": "2025-04-18"
-  },
-  {
-    "id": 3,
-    "title": "Affordable Housing Act",
-    "summary": "A bill seeking to allocate 5% of the national budget to build affordable housing units in urban areas.",
-    "status": "Passed",
-    "sponsor": "Hon. Peter Wekesa",
-    "dateProposed": "2025-03-10"
-  },
-  {
-    "id": 4,
-    "title": "Public Transport Improvement Bill",
-    "summary": "A bill that mandates the modernization of public transport, including bus fleets and digital fare systems.",
-    "status": "Awaiting Presidential Assent",
-    "sponsor": "Hon. Amina Yusuf",
-    "dateProposed": "2025-02-22"
-  }
-],
-"comments": [
-  {
-    "id": 1,
-    "billId": 1,
-    "author": "Grace Muthoni",
-    "comment": "Consider adding a grace period before the plastic ban takes effect to allow businesses to adjust."
-  },
-  {
-    "id": 2,
-    "billId": 2,
-    "author": "Kevin Otieno",
-    "comment": "The bill should also include provisions for vocational training to enhance youth employability."
-  },
-  {
-    "id": 3,
-    "billId": 3,
-    "author": "Linda Njoroge",
-    "comment": "Please clarify how the 5% housing budget will be distributed across counties to ensure equity."
-  }
-]
-
-
+    {
+      "id": 1,
+      "title": "Plastic Ban Act",
+      "summary": "This bill aims to eliminate the use of single-use plastic bags in all retail and grocery outlets across the country. It seeks to reduce environmental pollution, especially in water bodies and urban drainage systems, by enforcing a complete ban and promoting the use of biodegradable alternatives.",
+      "status": "Pending",
+      "sponsor": "Hon. John Karanja",
+      "dateProposed": "2025-05-01"
+    },
+    {
+      "id": 2,
+      "title": "Youth Employment Bill",
+      "summary": "The Youth Employment Bill proposes tax incentives and subsidies for companies that prioritize hiring fresh graduates and youth under the age of 30. The bill emphasizes the importance of reducing unemployment rates by creating more entry-level opportunities and nurturing young professionals through internship and apprenticeship programs.",
+      "status": "In Committee",
+      "sponsor": "Hon. Mary Atieno",
+      "dateProposed": "2025-04-18"
+    },
+    {
+      "id": 3,
+      "title": "Affordable Housing Act",
+      "summary": "This act mandates the allocation of at least 5% of the national budget to fund the development of affordable housing units in key urban areas. It aims to address the growing housing deficit by targeting low-income earners and ensuring equitable distribution of housing resources across counties.",
+      "status": "Passed",
+      "sponsor": "Hon. Peter Wekesa",
+      "dateProposed": "2025-03-10"
+    },
+    {
+      "id": 4,
+      "title": "Public Transport Improvement Bill",
+      "summary": "This bill proposes a countrywide modernization of the public transport system. It includes the introduction of smart fare systems, upgrading the public bus fleets to eco-friendly models, and improving passenger safety standards. The objective is to provide reliable, clean, and efficient transport services for all citizens.",
+      "status": "Awaiting Presidential Assent",
+      "sponsor": "Hon. Amina Yusuf",
+      "dateProposed": "2025-02-22"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "billName": "Plastic Ban Act",
+      "author": "Francis Karani",
+      "comment": "Consider adding a grace period before the plastic ban takes effect to allow businesses to adjust."
+    },
+    {
+      "id": 2,
+      "billName": "Youth Employment Bill",
+      "author": "John Otieno",
+      "comment": "The bill should also include provisions for vocational training to enhance youth employability."
+    },
+    {
+      "id": 3,
+      "billName": "Affordable Housing Act",
+      "author": "Alice Wanjiku",
+      "comment": "Please clarify how the 5% housing budget will be distributed across counties to ensure equity."
+    }
+  ]
 }

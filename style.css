@@ -108,4 +108,14 @@ input{
   height: auto;
   padding: 5px;
 }
-
+.cardDiv{
+  background-color: rgba(240, 255, 255, 0.849);
+  height: auto;
+  width: 300px;
+}
+.billDisplay{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}

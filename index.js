@@ -3,9 +3,10 @@
 const joinBtn = document.getElementById("joinBtn");
 const userDetails = document.querySelector(".userDetails");
 const welcomeSection = document.querySelector("#welcomeSection");
-const intro = document.querySelector(".intro")
-const acceptedDisplay =document.querySelector(".displayContainer")
-const firstContainer = document.querySelector(".container")
+const intro = document.querySelector(".intro");
+const acceptedDisplay = document.querySelector(".displayContainer");
+const firstContainer = document.querySelector(".container");
+
 
 // creates the sign up form that will be manipulated to create the login form.
 function signupForm() {
@@ -24,32 +25,40 @@ function signupForm() {
     </div>
   `;
 }
+
 // creates the section where only authorized users will see
 function authorized() {
-    return`
-       <h2 class="authorizedH2" >Welcome to Citizen Bills  Your Voice in Legislation</h2>
-        <p class="authorizedP">A bill is a formal written proposal for a new law or a change to an existing law that is presented for debate and approval by a legislative body, such as a parliament or congress. It outlines specific provisions, rules, or regulations that, if passed through the necessary legislative processes and approved by the appropriate authorities (like a president or governor), become legally binding statutes. Bills are essential tools in shaping public policy, addressing societal needs, and guiding governance. click the button to view the bill.</p><br>
-
-            <button id="viewBill">View the bill</button>
-             <div class="comments">
-        <form>
-            <h2>Participate in the Conversation</h2>
-            <input type="text" placeholder="Enter the bill title ">
-            <input type="text" placeholder="Enter your name">
-            <input type="text" placeholder="Enter your comment">
-            <button id="addComment">Add Comments</button>
-        </form>
-     </div>
-    `
-    
+  return `
+    <h2 class="authorizedH2">Welcome to Citizen Bills – Your Voice in Legislation</h2>
+    <p class="authorizedP">A bill is a formal written proposal for a new law or a change to an existing law that is presented for debate and approval by a legislative body, such as a parliament or congress. It outlines specific provisions, rules, or regulations that, if passed through the necessary legislative processes and approved by the appropriate authorities (like a president or governor), become legally binding statutes.</p><br>
+    <button id="viewBill">View the bill</button>
+    <div class="comments">
+      <form>
+        <h2>Participate in the Conversation</h2>
+        <input type="text" placeholder="Enter the bill title">
+        <input type="text" placeholder="Enter your name">
+        <input type="text" placeholder="Enter your comment">
+        <button id="addComment">Add Comments</button>
+      </form>
+    </div>
+      <div class="billDisplay"></div>
+  `;
 }
 
-// adds an event listener that displays the form to the Dom using a click event
+// comments card function
+function commentsCard(comment) {
+  return `
+    <div class="cardDiv">
+      <h2 class="cardH2">${comment.author}</h2>
+      <p class="cardP">${comment.comment}</p>
+    </div>
+  `;
+}
+
+// adds an event listener that displays the form to the DOM using a click event
 joinBtn.addEventListener("click", () => {
-  // displays the signup form on the Dom
   userDetails.innerHTML = signupForm();
 
-  // declares variables using the attributes of the form.
   const userName = document.querySelector("#name");
   const userCountry = document.querySelector("#country");
   const userCounty = document.querySelector("#county");
@@ -57,8 +66,8 @@ joinBtn.addEventListener("click", () => {
   const formH1 = document.querySelector(".formH1");
   const emailInput = document.querySelector("#email");
   const passwordInput = document.querySelector("#password");
+  const loginBtn = document.querySelector("#loginBtn");
 
-  // hide the unnecessary inputs and button, because we're using the form for login first
   userName.style.display = "none";
   userCountry.style.display = "none";
   userCounty.style.display = "none";
@@ -66,43 +75,33 @@ joinBtn.addEventListener("click", () => {
   welcomeSection.style.display = "none";
   intro.style.display = "none";
 
-  // changes the h1 from (signup to citizen bills, to login to citizen bills)
   formH1.textContent = "Login to Citizen Bills";
 
-
-  // handles the login attempt
+  // handle login
   loginBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    // validation to ensure the email and the password are keyed
     if (!email || !password) {
       alert("Please enter both email and password");
       return;
     }
 
-    // fetch request to make sure the user details match what is there in the server
     try {
       const res = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`);
-      // converts the server response into json object and saves it into the users variable
-      // it returns an array if a user matches the details and an empty array if the user matches no details
       const users = await res.json();
 
-      // validation to check whether the user matches details
       if (users.length > 0) {
         alert("Login successful");
-        // display once the login is successfull
-        userDetails.style.display="none"
-        acceptedDisplay.innerHTML=authorized()
-        firstContainer.style.display="none"
-      }
-      // If the user has no account a signup form appears
-      else {
+        userDetails.style.display = "none";
+        acceptedDisplay.innerHTML = authorized();
+        firstContainer.style.display = "none";
+        fetchComments();
+      } else {
         alert("You don't have an account, sign up");
         userDetails.innerHTML = signupForm();
 
-        // store the signup form inputs again
         const userName = document.querySelector("#name");
         const userCountry = document.querySelector("#country");
         const userCounty = document.querySelector("#county");
@@ -110,19 +109,17 @@ joinBtn.addEventListener("click", () => {
         const formH1 = document.querySelector(".formH1");
         const emailInput = document.querySelector("#email");
         const passwordInput = document.querySelector("#password");
+        const loginBtn = document.querySelector("#loginBtn");
 
-        // show all the inputs needed for sign up
         userName.style.display = "block";
         userCountry.style.display = "block";
         userCounty.style.display = "block";
         signupBtn.style.display = "inline-block";
-        loginBtn.style.display="none"
-         acceptedDisplay.style.display="none"
+        loginBtn.style.display = "none";
+        acceptedDisplay.style.display = "none";
 
         formH1.textContent = "Sign up to Citizen Bills";
 
-        // handle the user registration data.
-        // create an event listener to the signup button to pick on the data keyed in the inputs
         signupBtn.addEventListener("click", async (e) => {
           e.preventDefault();
           const name = userName.value.trim();
@@ -131,16 +128,13 @@ joinBtn.addEventListener("click", () => {
           const country = userCountry.value.trim();
           const county = userCounty.value.trim();
 
-          // validation to make sure that the inputs are not empty
           if (!name || !email || !password || !country || !county) {
             alert("Please fill in all fields");
             return;
           }
 
-          // store inputs in an object
           const userReg = { name, email, password, country, county };
 
-          // post user information to db.json  
           try {
             const res = await fetch("http://localhost:3000/users", {
               method: "POST",
@@ -150,13 +144,12 @@ joinBtn.addEventListener("click", () => {
 
             if (res.ok) {
               alert("Signup successful!");
-            //   display when the signup is successfull
-              userDetails.style.display="none"
-              acceptedDisplay.innerHTML=authorized()
-               firstContainer.style.display="none"
+              userDetails.style.display = "none";
+              acceptedDisplay.innerHTML = authorized();
+              firstContainer.style.display = "none";
+              fetchComments();
             } else {
               alert("Signup failed. Try again.");
-               acceptedDisplay.style.display="none"
             }
           } catch (error) {
             console.error("Error during signup:", error);
@@ -170,3 +163,18 @@ joinBtn.addEventListener("click", () => {
     }
   });
 });
+
+// Fetch and display comments
+function fetchComments() {
+    const billDisplay = document.querySelector(".billDisplay");
+    
+  fetch("http://localhost:3000/comments")
+    .then(res => res.json())
+    .then(comments => {
+      billDisplay.innerHTML = "";
+      comments.forEach(comment => {
+        billDisplay.innerHTML += commentsCard(comment);
+      });
+    })
+    .catch(err => console.error("Fetch error:", err));
+}
