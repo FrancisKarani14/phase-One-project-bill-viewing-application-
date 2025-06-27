@@ -119,3 +119,22 @@ input{
   margin-bottom: 10px;
   padding: 10px;
 }
+.billSection{
+  background-color: azure;
+  margin: 10px;
+  width: 300px;
+  height: auto;
+  padding: 5px;
+  box-shadow: 3px 3px 5px black;
+}
+.commentsDisplay{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.cardDiv{
+  width: 300px;
+  height: auto;
+  box-shadow: 3px 3px 5px black;
+  margin: 10px;
+}
