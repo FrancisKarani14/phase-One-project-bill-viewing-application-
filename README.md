@@ -1,4 +1,4 @@
-#Citizen Bills APP
+**#Citizen Bills APP**
 
 A simple application built using HTML, CSS & Vanilla Javascript. It is part of my phase one assessment.
 
@@ -6,7 +6,7 @@ A simple application built using HTML, CSS & Vanilla Javascript. It is part of m
 **BY Francis Karani**
 
 
-#Description
+**#Description**
 
 
 This Is an appication that is meant to solve the misunderstanding and bridge the information gap between the citizens and the members of parliament.
@@ -59,7 +59,9 @@ Terminal/Command Line
 **Installation Progress**
 
 1. git clone using
-git@github.com:FrancisKarani14/phase-One-project-bill-viewing-application-.git
+
+   
+(git@github.com:FrancisKarani14/phase-One-project-bill-viewing-application-.git)
 
 1.Navigate to the project directory 
 cd Final-Project
@@ -67,7 +69,7 @@ cd Final-Project
 2. Run  the server
    Json-server -watch db.json
 
-   #Technologies Used
+   **#Technologies Used**
    - HTML
    - CSS
    - Javascript
