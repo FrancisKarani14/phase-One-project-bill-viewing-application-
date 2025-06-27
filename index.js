@@ -1,3 +1,4 @@
+// DOM references
 const joinBtn = document.getElementById("joinBtn");
 const userDetails = document.querySelector(".userDetails");
 const welcomeSection = document.querySelector("#welcomeSection");
@@ -5,10 +6,10 @@ const intro = document.querySelector(".intro");
 const acceptedDisplay = document.querySelector(".displayContainer");
 const firstContainer = document.querySelector(".container");
 
-// Creates the sign up form that will be manipulated to create the login form.
+// Template: Signup/Login form
 function signupForm() {
   return `
-    <div class="users" style="background:rgba(255, 255, 255, 0.788);height:auto;padding:10px;margin:10px;box-shadow:10px 10px 20px rgba(0,0,0,0.08);">
+    <div class="users" style="background:rgba(255, 255, 255, 0.788);padding:10px;margin:10px;box-shadow:10px 10px 20px rgba(0,0,0,0.08);">
       <h1 class="formH1">Sign up to Citizen Bills</h1>
       <div style="display:flex; flex-direction:column; gap:15px;">
         <input type="text" id="name" placeholder="Enter your name">
@@ -23,11 +24,18 @@ function signupForm() {
   `;
 }
 
-// Authorized user view
+// Template: Authorized View
 function authorized() {
   return `
     <h2 class="authorizedH2">Welcome to Citizen Bills – Your Voice in Legislation</h2>
-    <p class="authorizedP">A bill is a formal written proposal for a new law or a change to an existing law...</p><br>
+    <p class="authorizedP">
+      A bill is a formal written proposal that outlines a suggested new law or modifications to an existing law. 
+      It serves as a foundational tool in the legislative process, enabling lawmakers to address emerging issues, 
+      close legal loopholes, or refine regulations for better clarity and fairness. Once drafted, it undergoes a 
+      series of reviews and approvals in a legislative body. Public participation ensures the law reflects citizens' 
+      needs. If approved and signed, it becomes a binding statute.<br>
+      Click the button to view bills.
+    </p>
     <button id="viewBill">View the bill</button>
     <div class="billDisplay"></div>
     <div class="comments">
@@ -43,7 +51,7 @@ function authorized() {
   `;
 }
 
-// Comment card
+// Templates
 function commentsCard(comment) {
   return `
     <div class="cardDiv">
@@ -54,7 +62,6 @@ function commentsCard(comment) {
   `;
 }
 
-// Bill card
 function billCard(bill) {
   return `
     <div class="billSection">
@@ -67,7 +74,7 @@ function billCard(bill) {
   `;
 }
 
-// JOIN button logic
+// JOIN logic
 joinBtn.addEventListener("click", () => {
   userDetails.innerHTML = signupForm();
 
@@ -87,12 +94,10 @@ joinBtn.addEventListener("click", () => {
   signupBtn.style.display = "none";
   welcomeSection.style.display = "none";
   intro.style.display = "none";
-
   formH1.textContent = "Login to Citizen Bills";
 
   loginBtn.addEventListener("click", async (e) => {
-    e.preventDefault(); // avoid reload even if user hits Enter
-
+    e.preventDefault();
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
@@ -114,69 +119,51 @@ joinBtn.addEventListener("click", () => {
         enableBillView();
         enableCommentSubmit();
       } else {
-        alert("You don't have an account, sign up");
-        userDetails.innerHTML = signupForm();
-
-        const userName = document.querySelector("#name");
-        const userCountry = document.querySelector("#country");
-        const userCounty = document.querySelector("#county");
-        const signupBtn = document.querySelector("#signupBtn");
-        const formH1 = document.querySelector(".formH1");
-        const emailInput = document.querySelector("#email");
-        const passwordInput = document.querySelector("#password");
-        const loginBtn = document.querySelector("#loginBtn");
-
-        userName.style.display = "block";
-        userCountry.style.display = "block";
-        userCounty.style.display = "block";
-        signupBtn.style.display = "inline-block";
-        loginBtn.style.display = "none";
-        acceptedDisplay.style.display = "none";
-        formH1.textContent = "Sign up to Citizen Bills";
-
-        signupBtn.addEventListener("click", async (e) => {
-          e.preventDefault();
-
-          const name = userName.value.trim();
-          const email = emailInput.value.trim();
-          const password = passwordInput.value.trim();
-          const country = userCountry.value.trim();
-          const county = userCounty.value.trim();
-
-          if (!name || !email || !password || !country || !county) {
-            alert("Please fill in all fields");
-            return;
-          }
-
-          const userReg = { name, email, password, country, county };
-
-          try {
-            const res = await fetch("http://localhost:3000/users", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(userReg)
-            });
-
-            if (res.ok) {
-              alert("Signup successful!");
-              userDetails.style.display = "none";
-              acceptedDisplay.innerHTML = authorized();
-              firstContainer.style.display = "none";
-              fetchComments();
-              enableBillView();
-              enableCommentSubmit();
-            } else {
-              alert("Signup failed. Try again.");
-            }
-          } catch (error) {
-            console.error("Error during signup:", error);
-            alert("Something went wrong. Please try again.");
-          }
-        });
+        alert("No account found. Please sign up.");
+        joinBtn.click(); // reloads the form again
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      alert("Something went wrong. Please try again.");
+      console.error("Login error:", error);
+      alert("Something went wrong during login.");
+    }
+  });
+
+  signupBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const name = userName.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    const country = userCountry.value.trim();
+    const county = userCounty.value.trim();
+
+    if (!name || !email || !password || !country || !county) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const newUser = { name, email, password, country, county };
+
+    try {
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
+
+      if (res.ok) {
+        alert("Signup successful!");
+        userDetails.style.display = "none";
+        acceptedDisplay.innerHTML = authorized();
+        firstContainer.style.display = "none";
+        fetchComments();
+        enableBillView();
+        enableCommentSubmit();
+      } else {
+        alert("Signup failed. Try again.");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("Something went wrong during signup.");
     }
   });
 });
@@ -195,7 +182,7 @@ function fetchComments() {
     .catch(err => console.error("Fetch error:", err));
 }
 
-// View Bill
+// View bills
 function enableBillView() {
   const viewBillBtn = document.querySelector("#viewBill");
   if (viewBillBtn) {
@@ -204,6 +191,7 @@ function enableBillView() {
         .then(res => res.json())
         .then(bills => {
           const billDisplay = document.querySelector(".billDisplay");
+          billDisplay.innerHTML = ""; // clear previous
           bills.forEach(bill => {
             billDisplay.innerHTML += billCard(bill);
           });
@@ -213,50 +201,39 @@ function enableBillView() {
   }
 }
 
-// Add Comment
+// Comment submit (no reload)
 function enableCommentSubmit() {
-  const addComment = document.querySelector("#addComment");
+  const addCommentBtn = document.querySelector("#addComment");
+  if (addCommentBtn) {
+    addCommentBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-  if (addComment) {
-    addComment.addEventListener("click", function (e) {
-      e.preventDefault(); // prevents accidental form reload
-
-      const titleInput = document.querySelector("#titleInput");
-      const nameInput = document.querySelector("#nameInput");
-      const commentInput = document.querySelector("#commentInput");
-
-      const billName = titleInput.value.trim();
-      const author = nameInput.value.trim();
-      const comment = commentInput.value.trim();
+      const billName = document.querySelector("#titleInput").value.trim();
+      const author = document.querySelector("#nameInput").value.trim();
+      const comment = document.querySelector("#commentInput").value.trim();
 
       if (!billName || !author || !comment) {
         alert("Please fill in all fields");
         return;
       }
 
-      const commentPost = { billName, author, comment };
+      const newComment = { billName, author, comment };
 
       fetch("http://localhost:3000/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(commentPost)
+        body: JSON.stringify(newComment)
       })
-        .then(res => {
-          if (!res.ok) {
-            throw new Error("Failed to post comment");
-          }
-          return res.json();
-        })
+        .then(res => res.json())
         .then(() => {
-          alert("Comment added successfully!");
-          titleInput.value = "";
-          nameInput.value = "";
-          commentInput.value = "";
-          fetchComments();
+          fetchComments(); 
+          document.querySelector("#titleInput").value = "";
+          document.querySelector("#nameInput").value = "";
+          document.querySelector("#commentInput").value = "";
         })
         .catch(err => {
-          console.error("Error posting comment:", err);
-          alert("Something went wrong. Try again.");
+          console.error("Post error:", err);
+          alert("Failed to submit comment");
         });
     });
   }
