@@ -11,7 +11,7 @@ function signupForm() {
   return `
     <div class="users" style="background:rgba(255, 255, 255, 0.788);padding:10px;margin:10px;box-shadow:10px 10px 20px rgba(0,0,0,0.08);">
       <h1 class="formH1">Sign up to Citizen Bills</h1>
-      <div style="display:flex; flex-direction:column; gap:15px;">
+      <form style="display:flex; flex-direction:column; gap:15px;">
         <input type="text" id="name" placeholder="Enter your name">
         <input type="email" id="email" placeholder="Enter your email">
         <input type="password" id="password" placeholder="Enter your password">
@@ -19,7 +19,7 @@ function signupForm() {
         <input type="text" id="county" placeholder="Enter your county's name">
         <button id="loginBtn" type="button">Log In</button>
         <button id="signupBtn" type="button">Sign Up</button>
-      </div>
+      </form>
     </div>
   `;
 }
@@ -48,6 +48,26 @@ function authorized() {
       </div>
     </div>
     <div class="commentsDisplay"></div>
+
+    <div class="sponsorDisplay">
+    <div class="sponsor1"><img src="https://media.istockphoto.com/id/172441387/photo/businessman-portrait.jpg?s=612x612&w=0&k=20&c=kk49ALcFPz0NZxOBdTqDcOVqJENCNYOQMEwg9VuZY0k=" alt="a polititian">
+    <h4>Hon.John Karanja</h4>
+    <p></p>
+    </div>
+    <div class="sponsor2"><img src="https://media.istockphoto.com/id/514711952/photo/confidence-is-a-great-asset.jpg?s=612x612&w=0&k=20&c=fUUtKJrxfif1stusnq8PryGFz9EdNyaPqPW0tmDBhoI=" alt="an mp">
+    <h4>Hon. Mary Atieno</h4>
+    <p></p>
+    </div>
+    <div class="sponsor3"><img src="https://media.istockphoto.com/id/1589730135/photo/portrait-motivation-and-fist-with-a-business-black-man-in-studio-on-a-blue-background-for.jpg?s=612x612&w=0&k=20&c=95mEVhAgUb8y-4YTfvc9Ko4OKkPn3eaoUth-nCSY2Qg=" alt="a polititian">
+    <h4>Hon. Peter Wekesa</h4>
+    <p></p>
+    </div>
+    <div class="sponsor4"><img src="https://media.istockphoto.com/id/1293938434/photo/african-woman-using-smartphone-wearing-traditional-islamic-clothes.jpg?s=612x612&w=0&k=20&c=UKA6fltzJjgXcz4RaNBRrOXEl_qBUV0qGQ6DZ5vVxNw=" alt="an mp">
+    <h4>Hon. Amina Yusuf</h4>
+    <p></p>
+    </div>
+  
+   </div>
   `;
 }
 
@@ -118,9 +138,51 @@ joinBtn.addEventListener("click", () => {
         fetchComments();
         enableBillView();
         enableCommentSubmit();
+        // the sponsor comments section
+// sponsor class variables
+const sponsor1 = document.querySelector(".sponsor1");
+const sponsor2 = document.querySelector(".sponsor2");
+const sponsor3 = document.querySelector(".sponsor3");
+const sponsor4 = document.querySelector(".sponsor4");
+
+    sponsor1.addEventListener("mouseover", () => {
+      const p = sponsor1.querySelector("p");
+      p.innerHTML = "Let’s eliminate the use of single plastic bags and protect our environment.";
+    });
+    sponsor1.addEventListener("mouseout", () => {
+      sponsor1.querySelector("p").innerHTML = "";
+    });
+
+
+    sponsor2.addEventListener("mouseover", () => {
+      const p = sponsor2.querySelector("p");
+      p.innerHTML = "We are working toward free education for every child.";
+    });
+    sponsor2.addEventListener("mouseout", () => {
+      sponsor2.querySelector("p").innerHTML = "";
+    });
+
+
+    sponsor3.addEventListener("mouseover", () => {
+      const p = sponsor3.querySelector("p");
+      p.innerHTML = "Every citizen deserves equal access to healthcare.";
+    });
+    sponsor3.addEventListener("mouseout", () => {
+      sponsor3.querySelector("p").innerHTML = "";
+    });
+
+
+    sponsor4.addEventListener("mouseover", () => {
+      const p = sponsor4.querySelector("p");
+      p.innerHTML = "Digital access and affordable internet is a basic right.";
+    });
+    sponsor4.addEventListener("mouseout", () => {
+      sponsor4.querySelector("p").innerHTML = "";
+    });
+
       } else {
         alert("No account found. Please sign up.");
-        joinBtn.click(); // reloads the form again
+        joinBtn.click(); 
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -238,3 +300,29 @@ function enableCommentSubmit() {
     });
   }
 }
+// // the sponsor comments section
+// // sponsor class variables
+// const sponsor1 = document.querySelector(".sponsor1");
+// const sponsor2 = document.querySelector(".sponsor2");
+// const sponsor3 = document.querySelector(".sponsor3");
+// const sponsor4 = document.querySelector(".sponsor4");
+
+// sponsor1.addEventListener("mouseover", () => {
+//   const p = sponsor1.querySelector("p");
+//   p.innerHTML = "Let’s eliminate the use of single plastic bags and protect our environment.";
+// });
+
+// sponsor2.addEventListener("mouseover", () => {
+//   const p = sponsor2.querySelector("p");
+//   p.innerHTML = "We are working toward free education for every child.";
+// });
+
+// sponsor3.addEventListener("mouseover", () => {
+//   const p = sponsor3.querySelector("p");
+//   p.innerHTML = "Every citizen deserves equal access to healthcare.";
+// });
+
+// sponsor4.addEventListener("mouseover", () => {
+//   const p = sponsor4.querySelector("p");
+//   p.innerHTML = "Digital access and affordable internet is a basic right.";
+// });
