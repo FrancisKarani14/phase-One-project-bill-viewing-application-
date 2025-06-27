@@ -117,118 +117,159 @@ joinBtn.addEventListener("click", () => {
   formH1.textContent = "Login to Citizen Bills";
 
   loginBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+  e.preventDefault();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
 
-    if (!email || !password) {
-      alert("Please enter both email and password");
-      return;
-    }
+  if (!email || !password) {
+    alert("Please enter both email and password");
+    return;
+  }
 
-    try {
-      const res = await fetch(`https://json-server-1-ksyi.onrender.com/users?email=${email}&password=${password}`);
-      const users = await res.json();
+  try {
+    const res = await fetch(`https://json-server-1-ksyi.onrender.com/users?email=${email}&password=${password}`);
+    const users = await res.json();
 
-      if (users.length > 0) {
-        alert("Login successful");
-        userDetails.style.display = "none";
-        acceptedDisplay.innerHTML = authorized();
-        firstContainer.style.display = "none";
-        fetchComments();
-        enableBillView();
-        enableCommentSubmit();
-        // the sponsor comments section
-// sponsor class variables
-const sponsor1 = document.querySelector(".sponsor1");
-const sponsor2 = document.querySelector(".sponsor2");
-const sponsor3 = document.querySelector(".sponsor3");
-const sponsor4 = document.querySelector(".sponsor4");
+    if (users.length > 0) {
+      alert("Login successful");
+      userDetails.style.display = "none";
+      acceptedDisplay.innerHTML = authorized();
+      firstContainer.style.display = "none";
+      fetchComments();
+      enableBillView();
+      enableCommentSubmit();
 
-    sponsor1.addEventListener("mouseover", () => {
-      const p = sponsor1.querySelector("p");
-      p.innerHTML = "Let’s eliminate the use of single plastic bags and protect our environment.";
-    });
-    sponsor1.addEventListener("mouseout", () => {
-      sponsor1.querySelector("p").innerHTML = "";
-    });
+      // Sponsor tooltips
+      const sponsor1 = document.querySelector(".sponsor1");
+      const sponsor2 = document.querySelector(".sponsor2");
+      const sponsor3 = document.querySelector(".sponsor3");
+      const sponsor4 = document.querySelector(".sponsor4");
 
-
-    sponsor2.addEventListener("mouseover", () => {
-      const p = sponsor2.querySelector("p");
-      p.innerHTML = "We are working toward free education for every child.";
-    });
-    sponsor2.addEventListener("mouseout", () => {
-      sponsor2.querySelector("p").innerHTML = "";
-    });
-
-
-    sponsor3.addEventListener("mouseover", () => {
-      const p = sponsor3.querySelector("p");
-      p.innerHTML = "Every citizen deserves equal access to healthcare.";
-    });
-    sponsor3.addEventListener("mouseout", () => {
-      sponsor3.querySelector("p").innerHTML = "";
-    });
-
-
-    sponsor4.addEventListener("mouseover", () => {
-      const p = sponsor4.querySelector("p");
-      p.innerHTML = "Digital access and affordable internet is a basic right.";
-    });
-    sponsor4.addEventListener("mouseout", () => {
-      sponsor4.querySelector("p").innerHTML = "";
-    });
-
-      } else {
-        alert("No account found. Please sign up.");
-        joinBtn.click(); 
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Something went wrong during login.");
-    }
-  });
-
-  signupBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const name = userName.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-    const country = userCountry.value.trim();
-    const county = userCounty.value.trim();
-
-    if (!name || !email || !password || !country || !county) {
-      alert("Please fill in all fields");
-      return;
-    }
-
-    const newUser = { name, email, password, country, county };
-
-    try {
-      const res = await fetch("https://json-server-1-ksyi.onrender.com/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newUser)
+      sponsor1.addEventListener("mouseover", () => {
+        sponsor1.querySelector("p").innerHTML = "Let’s eliminate the use of single plastic bags and protect our environment.";
+      });
+      sponsor1.addEventListener("mouseout", () => {
+        sponsor1.querySelector("p").innerHTML = "";
       });
 
-      if (res.ok) {
-        alert("Signup successful!");
-        userDetails.style.display = "none";
-        acceptedDisplay.innerHTML = authorized();
-        firstContainer.style.display = "none";
-        fetchComments();
-        enableBillView();
-        enableCommentSubmit();
-      } else {
-        alert("Signup failed. Try again.");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      alert("Something went wrong during signup.");
+      sponsor2.addEventListener("mouseover", () => {
+        sponsor2.querySelector("p").innerHTML = "We are working toward free education for every child.";
+      });
+      sponsor2.addEventListener("mouseout", () => {
+        sponsor2.querySelector("p").innerHTML = "";
+      });
+
+      sponsor3.addEventListener("mouseover", () => {
+        sponsor3.querySelector("p").innerHTML = "Every citizen deserves equal access to healthcare.";
+      });
+      sponsor3.addEventListener("mouseout", () => {
+        sponsor3.querySelector("p").innerHTML = "";
+      });
+
+      sponsor4.addEventListener("mouseover", () => {
+        sponsor4.querySelector("p").innerHTML = "Digital access and affordable internet is a basic right.";
+      });
+      sponsor4.addEventListener("mouseout", () => {
+        sponsor4.querySelector("p").innerHTML = "";
+      });
+
+    } else {
+      alert("No account found. Please sign up.");
+
+      // Show signup fields
+      userName.style.display = "block";
+      userCountry.style.display = "block";
+      userCounty.style.display = "block";
+      signupBtn.style.display = "block";
+      loginBtn.style.display ="none";
+      formH1.textContent = "Sign up to Citizen Bills";
+      emailInput.value=""
+      passwordInput.value=""
+      
+
+      // Reset the signup button to avoid duplicate listeners
+      const newSignupBtn = signupBtn.cloneNode(true);
+      signupBtn.parentNode.replaceChild(newSignupBtn, signupBtn);
+
+      newSignupBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const name = userName.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        const country = userCountry.value.trim();
+        const county = userCounty.value.trim();
+
+        if (!name || !email || !password || !country || !county) {
+          alert("Please fill in all fields");
+          return;
+        }
+
+        const newUser = { name, email, password, country, county };
+
+        try {
+          const res = await fetch("https://json-server-1-ksyi.onrender.com/users", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newUser)
+          });
+
+          if (res.ok) {
+            alert("Signup successful!");
+            userDetails.style.display = "none";
+            acceptedDisplay.innerHTML = authorized();
+            firstContainer.style.display = "none";
+            fetchComments();
+            enableBillView();
+            enableCommentSubmit();
+               // Sponsor tooltips
+      const sponsor1 = document.querySelector(".sponsor1");
+      const sponsor2 = document.querySelector(".sponsor2");
+      const sponsor3 = document.querySelector(".sponsor3");
+      const sponsor4 = document.querySelector(".sponsor4");
+
+      sponsor1.addEventListener("mouseover", () => {
+        sponsor1.querySelector("p").innerHTML = "Let’s eliminate the use of single plastic bags and protect our environment.";
+      });
+      sponsor1.addEventListener("mouseout", () => {
+        sponsor1.querySelector("p").innerHTML = "";
+      });
+
+      sponsor2.addEventListener("mouseover", () => {
+        sponsor2.querySelector("p").innerHTML = "We are working toward free education for every child.";
+      });
+      sponsor2.addEventListener("mouseout", () => {
+        sponsor2.querySelector("p").innerHTML = "";
+      });
+
+      sponsor3.addEventListener("mouseover", () => {
+        sponsor3.querySelector("p").innerHTML = "Every citizen deserves equal access to healthcare.";
+      });
+      sponsor3.addEventListener("mouseout", () => {
+        sponsor3.querySelector("p").innerHTML = "";
+      });
+
+      sponsor4.addEventListener("mouseover", () => {
+        sponsor4.querySelector("p").innerHTML = "Digital access and affordable internet is a basic right.";
+      });
+      sponsor4.addEventListener("mouseout", () => {
+        sponsor4.querySelector("p").innerHTML = "";
+      });
+          } else {
+            alert("Signup failed. Try again.");
+          }
+        } catch (error) {
+          console.error("Signup error:", error);
+          alert("Something went wrong during signup.");
+        }
+      });
     }
-  });
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("Something went wrong during login.");
+  }
 });
+
+
 
 // Fetch comments
 function fetchComments() {
@@ -300,29 +341,5 @@ function enableCommentSubmit() {
     });
   }
 }
-// // the sponsor comments section
-// // sponsor class variables
-// const sponsor1 = document.querySelector(".sponsor1");
-// const sponsor2 = document.querySelector(".sponsor2");
-// const sponsor3 = document.querySelector(".sponsor3");
-// const sponsor4 = document.querySelector(".sponsor4");
+}); 
 
-// sponsor1.addEventListener("mouseover", () => {
-//   const p = sponsor1.querySelector("p");
-//   p.innerHTML = "Let’s eliminate the use of single plastic bags and protect our environment.";
-// });
-
-// sponsor2.addEventListener("mouseover", () => {
-//   const p = sponsor2.querySelector("p");
-//   p.innerHTML = "We are working toward free education for every child.";
-// });
-
-// sponsor3.addEventListener("mouseover", () => {
-//   const p = sponsor3.querySelector("p");
-//   p.innerHTML = "Every citizen deserves equal access to healthcare.";
-// });
-
-// sponsor4.addEventListener("mouseover", () => {
-//   const p = sponsor4.querySelector("p");
-//   p.innerHTML = "Digital access and affordable internet is a basic right.";
-// });
