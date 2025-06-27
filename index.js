@@ -127,7 +127,7 @@ joinBtn.addEventListener("click", () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`);
+      const res = await fetch(`https://json-server-1-ksyi.onrender.com/users?email=${email}&password=${password}`);
       const users = await res.json();
 
       if (users.length > 0) {
@@ -206,7 +206,7 @@ const sponsor4 = document.querySelector(".sponsor4");
     const newUser = { name, email, password, country, county };
 
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const res = await fetch("https://json-server-1-ksyi.onrender.com/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser)
@@ -233,7 +233,7 @@ const sponsor4 = document.querySelector(".sponsor4");
 // Fetch comments
 function fetchComments() {
   const commentsDisplay = document.querySelector(".commentsDisplay");
-  fetch("http://localhost:3000/comments")
+  fetch("https://json-server-1-ksyi.onrender.com/comments")
     .then(res => res.json())
     .then(comments => {
       commentsDisplay.innerHTML = "";
@@ -249,7 +249,7 @@ function enableBillView() {
   const viewBillBtn = document.querySelector("#viewBill");
   if (viewBillBtn) {
     viewBillBtn.addEventListener("click", () => {
-      fetch("http://localhost:3000/bills")
+      fetch("https://json-server-1-ksyi.onrender.com/bills")
         .then(res => res.json())
         .then(bills => {
           const billDisplay = document.querySelector(".billDisplay");
@@ -281,7 +281,7 @@ function enableCommentSubmit() {
 
       const newComment = { billName, author, comment };
 
-      fetch("http://localhost:3000/comments", {
+      fetch("https://json-server-1-ksyi.onrender.com/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newComment)
