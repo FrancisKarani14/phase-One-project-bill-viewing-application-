@@ -1,29 +1,31 @@
-*{
-    box-sizing: border-box;
-    margin: 0%;
-    padding: 0%;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-:root{
-    --bgcolor:#a18a08c5;
-    --intro:rgba(255, 255, 255, 0.788);
-    --jionbutton:#19cf03;
-}
-.container{
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(var(--bgcolor), var(--bgcolor)), url(https://media.istockphoto.com/id/1307737982/vector/coat-of-arms-of-the-republic-of-kenya.jpg?s=612x612&w=0&k=20&c=drDYJ1wGRo7-cNhJFunIXbN7dRjtf21imuQhhAPAR_w=);
-    /* background-color: var(--bgcolor); */
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
+:root {
+  --bgcolor: #a18a08c5;
+  --intro: rgba(255, 255, 255, 0.788);
+  --jionbutton: #19cf03;
 }
+
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(var(--bgcolor), var(--bgcolor)), url(https://media.istockphoto.com/id/1307737982/vector/coat-of-arms-of-the-republic-of-kenya.jpg?s=612x612&w=0&k=20&c=drDYJ1wGRo7-cNhJFunIXbN7dRjtf21imuQhhAPAR_w=);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .intro {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; 
+  text-align: center;
   background-color: var(--intro);
   padding: 50px 20px;
   margin: 20px;
@@ -38,50 +40,57 @@
   cursor: pointer;
 }
 
-.intro p{
+.intro p {
   font-size: 1.5rem;
 }
-form{
+
+form {
   display: flex;
   flex-direction: column;
   width: 60vh;
+  max-width: 90vw;
 }
-input{
+
+input {
   font-size: 1.5rem;
   margin-bottom: 20px;
   background-color: rgba(128, 128, 128, 0.486);
 }
+
 #signupBtn,
-#loginBtn{
+#loginBtn {
   cursor: pointer;
   background-color: red;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
- .users {
+
+.users {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: fit-content; 
+  width: fit-content;
   padding: 10px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
-.userDetails{
+
+.userDetails {
   display: flex;
   justify-content: center;
 }
-.displayContainer{
+
+.displayContainer {
   background-color: var(--bgcolor);
-  height: auto;
   width: 100vw;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-   align-items: center;
-  text-align: center; 
+  align-items: center;
+  text-align: center;
 }
 
 #viewBill,
-#addComment{
+#addComment {
   width: auto;
   font-size: 1.2rem;
   background-color: var(--jionbutton);
@@ -89,73 +98,115 @@ input{
   margin-bottom: 10px;
   cursor: pointer;
 }
+
 .authourizedP {
   font-size: 1.5rem;
   margin: 10px;
+}
 
-}
-.billDisplay{
-  height: auto;
-  
-}
-.authorizedH2{
-  font-size:1.5rem ;
-  font-weight: 700;
-}
-.comments{
-  background-color: white;
-  width: auto;
-  height: auto;
-  padding: 5px;
-}
-.cardDiv{
-  background-color: rgba(240, 255, 255, 0.849);
-  height: auto;
-  width: 300px;
-}
-.billDisplay{
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
-  justify-items: center;
-}
-.billSection{
-  background-color: azure;
-  margin: 10px;
-  width: 300px;
-  height: auto;
-  padding: 5px;
-  box-shadow: 3px 3px 5px black;
-}
-.commentsDisplay{
+.billDisplay {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
+  gap: 10px;
+  margin: 10px 0;
 }
-.cardDiv{
+
+.billSection {
+  background-color: azure;
   width: 300px;
   height: auto;
+  padding: 10px;
   box-shadow: 3px 3px 5px black;
+}
+
+.comments {
+  background-color: white;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.commentsDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cardDiv {
+  background-color: rgba(240, 255, 255, 0.849);
+  box-shadow: 3px 3px 5px black;
+  padding: 10px;
+  width: 300px;
   margin: 10px;
 }
-img{
+
+img {
   height: 110px;
   width: 110px;
-  border-radius: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-.sponsorDisplay{
+
+.sponsorDisplay {
   display: flex;
-  justify-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+  margin-top: 20px;
 }
+
 .sponsor1,
 .sponsor2,
 .sponsor3,
-.sponsor4{
+.sponsor4 {
   width: 250px;
-  margin:5px;
-  height: auto;
+  padding: 10px;
   background-color: rgba(240, 255, 255, 0.822);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ======= Responsive Styles ======= */
+@media (max-width: 768px) {
+  .intro {
+    padding: 30px 15px;
+    margin: 10px;
+  }
+
+  .intro p {
+    font-size: 1.2rem;
+  }
+
+  form {
+    width: 90vw;
+  }
+
+  input {
+    font-size: 1.2rem;
+  }
+
+  .billSection,
+  .cardDiv,
+  .sponsor1,
+  .sponsor2,
+  .sponsor3,
+  .sponsor4 {
+    width: 90%;
+  }
+
+  .authorizedH2 {
+    font-size: 1.2rem;
+  }
+
+  .authourizedP {
+    font-size: 1rem;
+  }
+
+  #viewBill,
+  #addComment {
+    width: 90%;
+    font-size: 1rem;
+  }
 }
